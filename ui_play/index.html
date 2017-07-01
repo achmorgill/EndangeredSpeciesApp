@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>UI Testing Page</title>
+    <script type="text/javascript" src="./public/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="./public/main.css" />
+  </head>
+  <body>
+    <div id="main-div">
+      <div id="info-panel"><p>INFO-PANEL</p></div>
+      <div id="box-container"></div>
+      <!-- <div id="timeline"></div> -->
+      <!-- NICK : I'm having issues with our timeline div. -->
+      <!-- It's part of main-div which is a flexbox row element and i need this -->
+      <!-- div to break out of that pattern and align itself under the box-container div -->
+      <!-- Any ideas? -->
+    </div>
+
+  </body>
+</html>
+
+
+<!-- we need a function that sends out messages to these div's by id when it hits a status change ONLY
+Therefore all date and status info would have to be compile into a central object and our
+listener will send messages when it hits any keys held. For example it receives 1996 so targets
+elements 1, 6 and 9 who all change status. -->
