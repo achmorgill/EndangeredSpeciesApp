@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Browser page 0.1</title>
+	<link rel="stylesheet" type = "text/css" href="style.css">
+	<link rel="icon" href="bibs.jpg" type="image/jpg">
+</head>
+<body>
+	<section>
+		<div class = "outerSquare">
+			<div class = "innerSqaureRow">
+				<div class = "innerSquare">
+					<div id = "square1">
+					</div>
+				</div>
+				<div class = "innerSquare">
+					<div id = "square2">
+					</div>
+				</div>
+			</div>
+			<div class = "innerSqaureRow">
+				<div class = "innerSquare">
+					<div id = "square3">
+					</div>
+				</div>
+				<div class = "innerSquare">
+					<div id = "square4">
+					</div>
+				</div>
+			</div>
+		</div>
+	<section>
+
+	<script type="text/javascript">
+		
+		document.getElementById("square1").onclick = function(){
+			console.log("this is:",this);
+			var x = this;
+			console.log("x is",x);
+			this.style.height = "160px";
+			this.style.width = "160px";
+			this.style.marginTop = "71px";
+		}
+
+
+	</script>
+
+</body>
+</html>
