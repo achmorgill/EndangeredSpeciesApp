@@ -33,13 +33,20 @@
 
 	<script type="text/javascript">
 		
+	var toggle = 0;
+
 		document.getElementById("square1").onclick = function(){
-			console.log("this is:",this);
-			var x = this;
-			console.log("x is",x);
-			this.style.height = "160px";
-			this.style.width = "160px";
-			this.style.marginTop = "71px";
+			if (toggle == 0) {
+				this.style.height = "160px";
+				this.style.width = "160px";
+				this.style.marginTop = "71px";
+				toggle = 1;
+			} else {
+				this.style.height = "100px";
+				this.style.width = "100px";
+				this.style.marginTop = "101px";
+				toggle = 0;
+			}
 		}
 
 
