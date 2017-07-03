@@ -15,7 +15,8 @@ window.addEventListener('load', function(){
   var renderElephantDiv = function(data){
 
     console.log("slider value!=", this.value)
-    console.log('data[0]', data[0])
+    console.log('data:', data)
+
     document.getElementById("box-container").innerHTML = "";
     renderContainer(data[0], this.value)
 
@@ -57,18 +58,20 @@ var getSpeciesJson = function(speciesName, callback){
     if (request.status === 200) {
       var jsonString = request.responseText;
       var data = JSON.parse(jsonString);
-      // console.log("Data received from server: ", data);
+      console.log("Data received from server: ", data);
       callback(data);
     }
   });
 }
 
 var renderContainer = function(animal, year){
+  console.log("Animal!: ", animal)
   var div = document.createElement("div");
   div.className = "circle-div";
   var outer = document.getElementById("box-container")
 
   var head = document.createElement("p");
+  console.log("animal id 72", animal.id)
   head.innerText = animal.name;
   div.appendChild(head)
 

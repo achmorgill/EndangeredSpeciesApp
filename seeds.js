@@ -5,7 +5,7 @@ db.species.remove({})
 db.species.insert([
   {
   "id": "12392",
-  "name": "african Elephant",
+  "name": "African Elephant",
   "result": [
       {
       "year": "2008",
@@ -45,7 +45,8 @@ db.species.insert([
     ]
   },
   {
-  "name": "15951",
+  "id": "15951",
+  "name": "African Lion",
   "result": [
       {
       "year": "2016",
@@ -85,7 +86,8 @@ db.species.insert([
     ]
   },
   {
-  "name": "2477",
+  "id": "2477",
+  "name": "Blue Whale",
   "result": [
       {
       "year": "2008",
@@ -125,7 +127,8 @@ db.species.insert([
     ]
   },
   {
-  "name": "3897",
+  "id": "3897",
+  "name": "Loggerhead Turtle",
   "result": [
       {
       "year": "2015",
