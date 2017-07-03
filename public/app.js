@@ -7,18 +7,30 @@ window.addEventListener('load', function(){
   var slider = document.getElementById("rangeSlider")
 
   slider.addEventListener('input', function(){
-    getSpeciesJson("africanElephant", renderElephantDiv.bind(this));
-    // console.log(slider.value)
+    getAllJson(renderAll.bind(this));
+    // getSpeciesJson("africanElephant", renderElephantDiv.bind(this));
+    console.log(slider.value)
   })
 
-
-  var renderElephantDiv = function(data){
-
-    console.log("slider value!=", this.value)
-    console.log('data:', data)
-
+  var renderAll = function(data){
     document.getElementById("box-container").innerHTML = "";
-    renderContainer(data[0], this.value)
+    data.forEach(function(animal){
+      // renderAnimalDiv(animal);
+
+      console.log("slider value!=", this.value)
+      console.log('data:', data)
+
+      renderContainer(animal, this.value)
+
+
+
+    }.bind(this));
+  }
+
+
+
+  var renderAnimalDiv = function(data){
+
 
   };
 
@@ -27,8 +39,24 @@ window.addEventListener('load', function(){
 
 });
 
-var showElephant = function(elephant){
 
+
+var getAllJson = function(callback){
+
+  var request = new XMLHttpRequest();
+  var url = "http://localhost:3005/species/all";
+
+  request.open("GET", url);
+  request.send();
+
+  request.addEventListener('load', function () {
+    if (request.status === 200) {
+      var jsonString = request.responseText;
+      var data = JSON.parse(jsonString);
+      console.log("All data received from server: ", data);
+      callback(data);
+    }
+  });
 }
 
 var getSpeciesJson = function(speciesName, callback){
@@ -115,7 +143,6 @@ var getCurrentStatus = function(animal, currentYear){
   console.log("Looking for status at: ", currentYear)
 
   var index = 0;
-
   while ( index < (arrayLength-1) && (Number(assessmentArray[index].year) > Number(currentYear))){
     index++;
   }
