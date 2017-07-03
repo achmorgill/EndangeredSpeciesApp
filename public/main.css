@@ -40,8 +40,8 @@ body{
 .circle-div {
   display: flex;
   border: 1px solid pink;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   flex: auto;
   align-items: center;
   justify-content: center;
@@ -76,9 +76,9 @@ body{
   background-color: #FA6E51;
 }
 
-p {
+.circle-div p {
   /* NICK : Any ideas on how to position this text perfectly centered above the two inner divs?*/
   position: absolute;
-  font-size: 1.3em;
+  font-size: 0.7em;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
