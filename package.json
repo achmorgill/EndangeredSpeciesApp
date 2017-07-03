@@ -1,28 +1,17 @@
 {
-  "name": "EndangeredSpeciesApp",
+  "name": "TeamProject2",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack -w"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/richardedwards899/EndangeredSpeciesApp.git"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/richardedwards899/EndangeredSpeciesApp/issues"
-  },
-  "homepage": "https://github.com/richardedwards899/EndangeredSpeciesApp#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3"
-  },
-  "devDependencies": {
-    "webpack": "^3.0.0"
+    "express": "^4.15.3",
+    "mongodb": "^2.2.29"
   }
 }

@@ -1,50 +1,18 @@
 var express = require('express');
 var app = express();
-// var path = require('path');
 
-var bodyParser = require( 'body-parser' );
-app.use( bodyParser.json() );
-app.use( bodyParser.urlencoded( { extended: true } ));
+var speciesController = require('./controllers/speciesController.js'); //deals with requests starting '/animals'
+app.use('/species', speciesController);
 
-
-app.use( express.static( 'client/build' ));
-// app.use(require('./controllers/index.js'))
+app.use( express.static("public") ); //tells server to use the public folder for serving images, css, js etc
 
 
-// app.get('/', function (req, res) {
-//   res.sendFile(path.join(__dirname + '/index.html'));
+app.get("/", function( req, res ){
 
-//   res.json({name: "Gill"})
-// });
+  res.sendFile( __dirname+"/client/build/index.html");
 
-// app.get('/animals', function (req, res) {
+});
 
-//   // var request = new XMLHttpRequest();
-
-
-
-//   var animals = {
-//     list: {
-//       animal1: {
-//         name: 'Duck',
-//         weight: 5
-//       },
-//       animal2: {
-//         name: 'Dragon',
-//         weight: 500 
-//       }
-//     }
-//   }
-
-//   res.json(animals);
-// });
-
-
-
-// app.use(express.static('public'));
-
-  app.listen(3000, function () {
-  // var port = server.address().port;
-
-  console.log('Example app listening at http: 3000');
+app.listen( 3005, function(){
+  console.log("App running on port 3005!")
 });
