@@ -8,35 +8,14 @@ window.addEventListener('load', function(){
 
   slider.addEventListener('input', function(){
     getAllJson(renderAll.bind(this));
-    // getSpeciesJson("africanElephant", renderElephantDiv.bind(this));
-    console.log(slider.value)
   })
 
   var renderAll = function(data){
     document.getElementById("box-container").innerHTML = "";
     data.forEach(function(animal){
-      // renderAnimalDiv(animal);
-
-      console.log("slider value!=", this.value)
-      console.log('data:', data)
-
       renderContainer(animal, this.value)
-
-
-
     }.bind(this));
   }
-
-
-
-  var renderAnimalDiv = function(data){
-
-
-  };
-
-
-
-
 });
 
 
@@ -53,7 +32,6 @@ var getAllJson = function(callback){
     if (request.status === 200) {
       var jsonString = request.responseText;
       var data = JSON.parse(jsonString);
-      console.log("All data received from server: ", data);
       callback(data);
     }
   });
@@ -75,8 +53,6 @@ var getSpeciesJson = function(speciesName, callback){
         url = "http://localhost:3005/species/3897";
         break;
   }
-
-  var dataToReturn;
 
   var request = new XMLHttpRequest();
 
