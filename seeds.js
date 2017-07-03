@@ -4,7 +4,8 @@ db.species.remove({})
 
 db.species.insert([
   {
-  "name": "12392",
+  "id": "12392",
+  "name": "african Elephant",
   "result": [
       {
       "year": "2008",

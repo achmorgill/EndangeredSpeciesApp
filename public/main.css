@@ -1,0 +1,84 @@
+body{
+  background-color: #F2F2F2;
+  margin: 0;
+  font-size: 1.3em;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+#main-div{
+  display: flex;
+  width: auto;
+  border: 1px solid red;
+}
+
+#info-panel{
+  flex: 1;
+  margin: 2%;
+  border: 1px solid blue;
+}
+
+#box-container{
+  flex: 2;
+  border: 1px solid green;
+  margin: 2% 2% 2% 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+}
+
+/*#timeline{
+  flex: 2;
+  border: 1px solid black;
+  align-self: flex-end;
+  height: 5%;
+}*/
+
+
+.circle-div {
+  display: flex;
+  border: 1px solid pink;
+  width: 200px;
+  height: 200px;
+  flex: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-circle{
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  background-color: #d8d8d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-circle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.vulnerable{
+  width: 75%;
+  height: 75%;
+  background-color: yellow;
+}
+
+.endangered{
+  width: 50%;
+  height: 50%;
+  background-color: #FA6E51;
+}
+
+p {
+  /* NICK : Any ideas on how to position this text perfectly centered above the two inner divs?*/
+  position: absolute;
+  font-size: 1.3em;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
