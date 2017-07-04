@@ -32,4 +32,12 @@ router.get('/:id', function(req, res) {
   });
 });
 
+router.post('/bulkLoad', function(req, res) {
+
+  MongoClient.connect("mongodb://localhost:27017/endangeredAnimals", function(err, db){
+    db.collection("species").insert(req.body);
+    res.json("Added" + req.body.length + "  recoreds to the database")
+    db.close;
+});
+
 module.exports = router;

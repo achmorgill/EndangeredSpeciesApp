@@ -63,7 +63,6 @@ namesArray.forEach(function(scientificName, index){
 });//forEach
 
 
-
 var getNarratives = function(animalArray){
 
   var rootUrl = "http://apiv3.iucnredlist.org/api/v3/species/narrative/";
@@ -88,11 +87,50 @@ var getNarratives = function(animalArray){
         };
 
         if (allNarrativesAdded(animalArray)){
-          console.log("animalArray with narratives added::", animalArray);
+          // console.log("animalArray with narratives added::", animalArray);
+          getResults(animalArray);
         }
     });//request
   });//forEach
 }//getNarratives
+
+var getResults = function(animalArray){
+
+  var rootUrl = "http://apiv3.iucnredlist.org/api/v3/species/history/name/";
+  var endUrl = "?token=7fed1505eceb7b96fba16063a9b85a02b583179102f64c9c0d1bc482b2f2cba8";
+
+  animalArray.forEach(function(animal, index){
+
+    request (rootUrl + animal.latinName + endUrl, function (error, response, body) {
+      var data = JSON.parse(body);
+
+      if (response.statusCode != 200) return;
+
+        animal.result = data.result;
+
+        if (allResultsAdded(animalArray)){
+          console.log("SUCCESS!! animalArray with Results added::", animalArray);
+
+          //load the db!
+          loadDatabase(animalArray);
+        }
+    });//request
+  });//forEach
+}//getResults
+
+var loadDatabase = function(animalArray){
+  
+}
+
+var allResultsAdded = function(animalArray){
+
+  var count = 0;
+  for (var i = 0; i < animalArray.length; i++) {
+    if (animalArray[i].result.length !== 0)
+      count++;
+  }
+  return count === animalArray.length;
+}
 
 var allNarrativesAdded = function(animalArray){
 
