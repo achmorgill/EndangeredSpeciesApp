@@ -9,6 +9,9 @@ app.use( express.static("public") ); //tells server to use the public folder for
 
 app.get("/", function( req, res ){
 
+  //Bulk load
+  
+
   res.sendFile( __dirname+"/client/build/index.html");
 
 });
