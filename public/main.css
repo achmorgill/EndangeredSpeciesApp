@@ -72,22 +72,20 @@ body{
 }
 
 .vulnerable{
-  /*transition: height 2s ease;*/
   width: 75%;
   height: 75%;
   background-color: #D8B252;
 }
 
 .endangered{
-  /*transition: height 2s ease;*/
   width: 50%;
   height: 50%;
   background-color: #DC6337;
 }
 
 .circle-div p {
+  z-index: 100;
   margin: 0;
-  /* NICK : Any ideas on how to position this text perfectly centered above the two inner divs?*/
   position: absolute;
   font-size: 0.7em;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;

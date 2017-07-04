@@ -36,20 +36,17 @@ var getAllJson = function(callback){
     if (request.status === 200) {
       var jsonString = request.responseText;
       var data = JSON.parse(jsonString);
-      console.log("All data received from server: ", data);
       callback(data);
     }
   });
 }
 
 var renderContainer = function(animal, year){
-  console.log("Animal!: ", animal)
   var div = document.createElement("div");
   div.className = "circle-div";
   var outer = document.getElementById("box-container")
 
   var head = document.createElement("p");
-  console.log("animal id 72", animal.id)
   head.innerText = animal.name;
   div.appendChild(head)
 
@@ -60,8 +57,10 @@ var renderContainer = function(animal, year){
 var renderCircle = function(animal, year){
   var bgCircle = document.createElement("div");
   bgCircle.className = "bg-circle";
-  var inner = renderInnerCircle(animal, year)
+  var inner = renderInnerCircle(animal, year);
+
   bgCircle.appendChild(inner);
+
   return bgCircle;
 }
 
@@ -76,9 +75,22 @@ var renderInnerCircle = function(animal, year){
   } else {
     newClass = "endangered"
   }
+  // console.log("INNER CIRCLE CLASSNAME", innerCircle.className);
+  // console.log("THIS IS IT!!! ",innerCircle.className.includes(newClass));
+
+  // if (!innerCircle.className.includes(newClass)){
+  //   var keyframes = [
+  //     { opacity: 1, easing: 'ease-in' },
+  //     { opacity: .7, easing: 'ease-out' },
+  //     { opacity: 1 }
+  //   ];
+  //   innerCircle.animate(keyframes, 200);
+  // }
 
   innerCircle.className = "inner-circle " + newClass;
   innerCircle.id = animal.id;
+
+
   return innerCircle;
 }
 
@@ -86,15 +98,12 @@ var getCurrentStatus = function(animal, currentYear){
   var assessmentArray = animal.result
   var arrayLength = assessmentArray.length
 
-  console.log("Looking for status at: ", currentYear)
-
   var index = 0;
   while ( index < (arrayLength-1) && (Number(assessmentArray[index].year) > Number(currentYear))){
     index++;
   }
 
   var currentStatus = assessmentArray[index].category;
-  console.log("Conservation status at "+currentYear+" is ", currentStatus);
 
   return currentStatus;
 
