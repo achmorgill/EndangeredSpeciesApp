@@ -1,6 +1,8 @@
 window.addEventListener('load', function(){
 
 
+
+
   var height = document.body.scrollHeight
   var main = document.getElementById("main-div");
   main.style.height = height + "px";
@@ -18,7 +20,10 @@ window.addEventListener('load', function(){
     }.bind(this));
   }
 
+
+
   getAllJson(renderAll);
+  // console.log(document.getElementsByClassName("circle-div"))
 
 });
 
@@ -36,25 +41,37 @@ var getAllJson = function(callback){
     if (request.status === 200) {
       var jsonString = request.responseText;
       var data = JSON.parse(jsonString);
-      console.log("All data received from server: ", data);
       callback(data);
     }
   });
 }
 
 var renderContainer = function(animal, year){
-  console.log("Animal!: ", animal)
+
   var div = document.createElement("div");
   div.className = "circle-div";
+  div.id = animal.id;
   var outer = document.getElementById("box-container")
 
   var head = document.createElement("p");
-  console.log("animal id 72", animal.id)
   head.innerText = animal.name;
   div.appendChild(head)
 
   div.appendChild(renderCircle(animal, year));
+
+  div.addEventListener('click', function(event){
+    renderSidebar(animal);
+  })
   outer.appendChild(div);
+}
+
+var renderSidebar = function(animal){
+  var side = document.getElementById("side-content");
+  side.innerHTML = "";
+  var header = document.createElement("h2");
+  header.innerText = animal.name;
+  side.appendChild(header);
+  // TODO: complete data
 }
 
 var renderCircle = function(animal, year){
@@ -78,7 +95,6 @@ var renderInnerCircle = function(animal, year){
   }
 
   innerCircle.className = "inner-circle " + newClass;
-  innerCircle.id = animal.id;
   return innerCircle;
 }
 
@@ -86,16 +102,12 @@ var getCurrentStatus = function(animal, currentYear){
   var assessmentArray = animal.result
   var arrayLength = assessmentArray.length
 
-  console.log("Looking for status at: ", currentYear)
-
   var index = 0;
   while ( index < (arrayLength-1) && (Number(assessmentArray[index].year) > Number(currentYear))){
     index++;
   }
 
   var currentStatus = assessmentArray[index].category;
-  console.log("Conservation status at "+currentYear+" is ", currentStatus);
-
   return currentStatus;
 
 }
