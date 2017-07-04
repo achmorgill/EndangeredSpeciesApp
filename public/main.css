@@ -1,5 +1,10 @@
 body{
-  background-color: #F2F2F2;
+  height: 100%;
+  /*background: url("images/paper_texture.jpg");
+  background-size: 120%;*/
+  background-color: #7ABACF;
+
+  overflow: hidden;
   margin: 0;
   font-size: 1.3em;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -8,18 +13,21 @@ body{
 #main-div{
   display: flex;
   width: auto;
-  border: 1px solid red;
 }
 
-#info-panel{
-  flex: 1;
-  margin: 2%;
-  border: 1px solid blue;
+#info-sidebar{
+  background-color: #36454f;
+  height: 100%;
+  width: 20%;
+  margin: 0;
 }
 
 #box-container{
+  background-color: #E1E1D5;
+
+  z-index: -1;
   flex: 2;
-  border: 1px solid green;
+  padding: 2%;
   margin: 2% 2% 2% 0;
   display: flex;
   flex-direction: row;
@@ -39,9 +47,8 @@ body{
 
 .circle-div {
   display: flex;
-  border: 1px solid pink;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   flex: auto;
   align-items: center;
   justify-content: center;
@@ -51,7 +58,7 @@ body{
   width: inherit;
   height: inherit;
   border-radius: 50%;
-  background-color: #d8d8d8;
+  border: 1px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,20 +72,29 @@ body{
 }
 
 .vulnerable{
+  /*transition: height 2s ease;*/
   width: 75%;
   height: 75%;
-  background-color: yellow;
+  background-color: #D8B252;
 }
 
 .endangered{
+  /*transition: height 2s ease;*/
   width: 50%;
   height: 50%;
-  background-color: #FA6E51;
+  background-color: #DC6337;
 }
 
 .circle-div p {
+  margin: 0;
   /* NICK : Any ideas on how to position this text perfectly centered above the two inner divs?*/
   position: absolute;
   font-size: 0.7em;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
+
+/*#rangeSlider {
+  display: flex;
+  align-self: flex-end;
+  width: 100%;
+}*/
