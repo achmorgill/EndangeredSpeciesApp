@@ -42,7 +42,7 @@ namesArray.forEach(function(scientificName, index){
           name: speciesName,
           latinName: scientificName,
           result: [],
-          narrative: []
+          narrative: null
         }
         animalObjectArray.push(animalObject);
 
@@ -52,10 +52,10 @@ namesArray.forEach(function(scientificName, index){
       }
 
       if (isComplete(animalObjectArray, namesArray)){
-        console.log("Complete! animalObjectArray: ", animalObjectArray);
+        // console.log("Complete! animalObjectArray: ", animalObjectArray);
 
         animalObjectArrayCompressed = compressArray(animalObjectArray);
-        console.log("Compressed array: ", animalObjectArrayCompressed);
+        // console.log("Compressed array: ", animalObjectArrayCompressed);
 
         getNarratives(animalObjectArrayCompressed);
       }
@@ -80,32 +80,29 @@ var getNarratives = function(animalArray){
         var speciesHabitat = data.result[0].habitat;
         var speciesRange = data.result[0].geographicrange;
 
-        animal.narrative.push({
+        animal.narrative = {
           population: speciesPopulation,
           threats: speciesThreats,
           habitat: speciesHabitat,
           range: speciesRange
-        });
-
-        console.log("Added a narrative to "+animal.name);
+        };
 
         if (allNarrativesAdded(animalArray)){
-          console.log("Hurray! All narratives added!");
-          console.log("animalObjectArray::", animalArray);
+          console.log("animalArray with narratives added::", animalArray);
         }
     });//request
   });//forEach
 }//getNarratives
 
 var allNarrativesAdded = function(animalArray){
-  
+
   var count = 0;
   for (var i = 0; i < animalArray.length; i++) {
-    if (animalArray[i].narrative !== []){
+    if (animalArray[i].narrative !== null)
       count++;
-    }
   }
   return count === animalArray.length;
+
 }//allNarrativesAdded
 
 var compressArray = function(array){
