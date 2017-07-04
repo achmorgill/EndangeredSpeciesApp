@@ -1,4 +1,6 @@
 var request = require('request');
+var MongoClient = require('mongodb').MongoClient
+
 
 //from an array of names, pull back information from the RedList API.
 var namesArray = ["Loxodonta africana",
@@ -38,7 +40,7 @@ namesArray.forEach(function(scientificName, index){
 
         //create an object
         var animalObject = {
-          id: speciesId,
+          animalId: speciesId,
           name: speciesName,
           latinName: scientificName,
           result: [],
@@ -109,7 +111,7 @@ var getResults = function(animalArray){
         animal.result = data.result;
 
         if (allResultsAdded(animalArray)){
-          console.log("SUCCESS!! animalArray with Results added::", animalArray);
+          console.log("About to load database...");
 
           //load the db!
           loadDatabase(animalArray);
@@ -119,8 +121,15 @@ var getResults = function(animalArray){
 }//getResults
 
 var loadDatabase = function(animalArray){
-  
-}
+
+  // var jsonString = JSON.stringify(animalArray);
+
+  MongoClient.connect("mongodb://localhost:27017/endangeredAnimals", function(err, db){
+    db.collection("species").insert(animalArray);
+    db.close();
+  });
+
+}//loadDatabase
 
 var allResultsAdded = function(animalArray){
 
