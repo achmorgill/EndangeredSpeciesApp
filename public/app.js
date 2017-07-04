@@ -60,7 +60,9 @@ var renderContainer = function(animal, year){
   div.appendChild(renderCircle(animal, year));
 
   div.addEventListener('click', function(event){
+    console.log("Animal within click event : ", animal)
     renderSidebar(animal);
+    side.scrollTop(0)
   })
   outer.appendChild(div);
 }
@@ -71,6 +73,12 @@ var renderSidebar = function(animal){
   var header = document.createElement("h2");
   header.innerText = animal.name;
   side.appendChild(header);
+  var image = document.createElement("img");
+  image.src = "images/" + animal.id + ".jpg"
+  side.appendChild(image)
+  var main = document.createElement("p")
+  main.innerHTML = animal.narrative.habitat;
+  side.appendChild(main)
   // TODO: complete data
 }
 

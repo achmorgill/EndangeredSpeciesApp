@@ -12,6 +12,7 @@ body{
 #main-div{
   display: flex;
   width: auto;
+  padding: 0;
 }
 
 #info-sidebar{
@@ -22,15 +23,22 @@ body{
 }
 
 #side-content{
-  margin-top: 30%;
+  /*padding-left: 1%;
+  padding-right: 3%;*/
+  text-align: center;
+  font-size: .7em;
+  color: white;
+  margin-top: 10%;
   width: 90%;
-  height: 80%;
+  height: 90%;
   margin-left: auto;
   margin-right: auto;
-  border: 2px solid white;
+  /*border: 2px solid white;*/
+  overflow: auto;
 }
 
 #right-panel{
+  width: 67%;
   display: flex;
   flex-direction: column;
 }
@@ -42,7 +50,7 @@ body{
   /*z-index: -1;*/
   flex: 2;
   padding: 2%;
-  margin: 3%;
+  margin: 2%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -54,8 +62,8 @@ body{
 
 .circle-div {
   display: flex;
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   flex: auto;
   align-items: center;
   justify-content: center;
