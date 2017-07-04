@@ -19,12 +19,8 @@ var namesArray = ["Loxodonta africana",
 "Pongo pygmaeus"
 ];
 
-//build an array of IDs
-var idsArray = new Array(namesArray.length);
 var animalObjectArray = [];
 var animalObjectArrayCompressed = [];
-
-
 
 namesArray.forEach(function(scientificName, index){
 
@@ -36,10 +32,11 @@ namesArray.forEach(function(scientificName, index){
       var data = JSON.parse(body);
 
       if (data.result[0] !== undefined ){
-        // idsArray[index] = data.result[0].taxonid;
+
         var speciesName = data.result[0].main_common_name;
         var speciesId = data.result[0].taxonid;
 
+        //create an object
         var animalObject = {
           id: speciesId,
           name: speciesName,
@@ -48,31 +45,31 @@ namesArray.forEach(function(scientificName, index){
           narrative: []
         }
         animalObjectArray.push(animalObject);
+
       }
       else {
         animalObjectArray.push(undefined);
       }
 
-      if (isComplete(animalObjectArray)){
+      if (isComplete(animalObjectArray, namesArray)){
         console.log("Complete! animalObjectArray: ", animalObjectArray);
+
         animalObjectArrayCompressed = compressArray(animalObjectArray);
         console.log("Compressed array: ", animalObjectArrayCompressed);
 
-        //do some more stuff here!
-        getNarratives(animalObjectArray);
-        console.log("objects with added narratives", animalObjectArray);
+        getNarratives(animalObjectArrayCompressed);
       }
     }); //request
-});
+});//forEach
 
-var getNarratives = function(animalObjectArray){
+
+
+var getNarratives = function(animalArray){
 
   var rootUrl = "http://apiv3.iucnredlist.org/api/v3/species/narrative/";
   var endUrl = "?token=7fed1505eceb7b96fba16063a9b85a02b583179102f64c9c0d1bc482b2f2cba8";
 
-  // request (rootUrl + latinName + endUrl, , function (error, response, body)
-  // "http://apiv3.iucnredlist.org/api/v3/species/narrative/" + speciesLatinName + "?token=7fed1505eceb7b96fba16063a9b85a02b583179102f64c9c0d1bc482b2f2cba8", function (error, response, body)
-  animalObjectArray.forEach(function(animal, index){
+  animalArray.forEach(function(animal, index){
 
     request (rootUrl + animal.latinName + endUrl, function (error, response, body) {
       var data = JSON.parse(body);
@@ -90,47 +87,43 @@ var getNarratives = function(animalObjectArray){
           range: speciesRange
         });
 
-        if (allNarrativesAdded(animalObjectArray)){
+        console.log("Added a narrative to "+animal.name);
+
+        if (allNarrativesAdded(animalArray)){
           console.log("Hurray! All narratives added!");
-          console.log(animalObjectArray);
+          console.log("animalObjectArray::", animalArray);
         }
     });//request
   });//forEach
 }//getNarratives
 
-var allNarrativesAdded = function(animalObjectArray){
+var allNarrativesAdded = function(animalArray){
+  
   var count = 0;
-  for (var i = 0; i < animalObjectArray.length; i++) {
-    if (animalObjectArray[i].narrative !== []){
+  for (var i = 0; i < animalArray.length; i++) {
+    if (animalArray[i].narrative !== []){
       count++;
     }
   }
-  return count === animalObjectArray.length;
-}
+  return count === animalArray.length;
+}//allNarrativesAdded
 
 var compressArray = function(array){
-var returnArray = [];
-for (var i = 0; i < array.length; i++) {
-  if (array[i] !== undefined){
-    returnArray.push(array[i]);
+  var returnArray = [];
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] !== undefined){
+      returnArray.push(array[i]);
+    }
   }
-}
-return returnArray;
-}
+  return returnArray;
+}//compressArray
 
-var isComplete = function(array){
-var positionsFilled = 0;
-
-for (var i = 0; i < array.length; i++) {
-  if (array[i] || array[i] === undefined){
-    positionsFilled++;
-  }
-}
-return positionsFilled === array.length;
-}
+var isComplete = function(array1, array2){
+  return array1.length === array2.length;
+}//isComplete
 
 var initialiseArray = function(array){
   for (var i = 0; i < array.length; i++) {
     array[i] = null;
   }
-}
+}//initialiseArray
