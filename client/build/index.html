@@ -9,15 +9,12 @@
     </style>
   </head>
   <body>
-    <input id="rangeSlider" type="range" name="Year" min="1980" max="2017" step="1">
     <div id="main-div">
-    <div id="info-panel"><p>African Elephants currently occur in 37 countries in sub-Saharan Africa (see accompanying map in Supplementary Material, sourced from Blanc <span style=\"font-style: italic;\">et al</span>. 2007). They are known to have become nationally extinct in Burundi in the 1970s, in The Gambia in 1913, in Mauritania in the 1980s, and in Swaziland in 1920, where they were reintroduced in the 1980s and 1990s.<br/><br/>Although large tracts of continuous elephant range remain in parts of Central, Eastern and Southern Africa, elephant distribution is becoming increasingly fragmented across the continent. <br/><br/>The quality of knowledge available on elephant distribution varies considerably across the species' range. While distribution patterns are well understood in most of Eastern, Southern and West Africa, there is little reliable information on elephant distribution for much of Central Africa.</p></div>
-    <div id="box-container"></div>
-    <!-- <div id="timeline"></div> -->
-    <!-- NICK : I'm having issues with our timeline div. -->
-    <!-- It's part of main-div which is a flexbox row element and i need this -->
-    <!-- div to break out of that pattern and align itself under the box-container div -->
-    <!-- Any ideas? -->
+    <aside id="info-sidebar"><div id="side-content"></div></aside>
+    <div id="right-panel">
+      <div id="box-container"></div>
+      <input id="rangeSlider" type="range" name="Year" min="1980" max="2017" step="1">
+    </div>
   </div>
 
   </body>
