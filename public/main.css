@@ -1,9 +1,8 @@
 body{
   height: 100%;
-  /*background: url("images/paper_texture.jpg");
-  background-size: 120%;*/
-  background-color: #7ABACF;
-
+  background: url("images/paper_texture.png");
+  background-size: 120%;
+  /*background-color: #7ABACF;*/
   overflow: hidden;
   margin: 0;
   font-size: 1.3em;
@@ -18,17 +17,32 @@ body{
 #info-sidebar{
   background-color: #36454f;
   height: 100%;
-  width: 20%;
+  width: 30%;
   margin: 0;
 }
 
-#box-container{
-  background-color: #E1E1D5;
+#side-content{
+  margin-top: 30%;
+  width: 90%;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid white;
+}
 
-  z-index: -1;
+#right-panel{
+  display: flex;
+  flex-direction: column;
+}
+
+
+#box-container{
+  background: url("images/rice_paper.png");
+  background-color: #E1E1D5;
+  /*z-index: -1;*/
   flex: 2;
   padding: 2%;
-  margin: 2% 2% 2% 0;
+  margin: 3%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -36,13 +50,6 @@ body{
   align-items: center;
   align-content: space-around;
 }
-
-/*#timeline{
-  flex: 2;
-  border: 1px solid black;
-  align-self: flex-end;
-  height: 5%;
-}*/
 
 
 .circle-div {
@@ -93,8 +100,43 @@ body{
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
-/*#rangeSlider {
-  display: flex;
-  align-self: flex-end;
+input[type=range]#rangeSlider {
+  -webkit-appearance: none;
+  width: auto;
+  margin: 0px 3% 2%;
+}
+
+input[type=range]#rangeSlider:focus {
+  outline: none;
+}
+input[type=range]#rangeSlider::-webkit-slider-runnable-track {
   width: 100%;
+  height: 36px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: #36454f;
+  border-radius: 2.6px;
+  border: 0px solid #000101;
+}
+input[type=range]#rangeSlider::-webkit-slider-thumb {
+  box-shadow: 0.8px 0.8px 0.7px rgba(0, 0, 0, 0.71), 0px 0px 0.8px rgba(13, 13, 13, 0.71);
+  border: 0px solid rgba(0, 0, 0, 0.57);
+  height: 36px;
+  width: 20px;
+  border-radius: 5px;
+  background: #ffffff;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: 0px;
+}
+
+
+
+
+/*#rangeSlider {
+width: 80%;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 2%;
+height: 20px;
 }*/

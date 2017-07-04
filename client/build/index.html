@@ -3,20 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Some sweet-ass title</title>
+    <script type="text/javascript" src="bulkLoad.js"></script> <!-- this must be in the public folder -->
     <script type="text/javascript" src="app.js"></script> <!-- this must be in the public folder -->
     <link rel="stylesheet" type="text/css" href="main.css" />
     </style>
   </head>
   <body>
     <div id="main-div">
-    <aside id="info-sidebar"></aside>
-    <div id="box-container"></div>
-    <input id="rangeSlider" type="range" name="Year" min="1980" max="2017" step="1">
-    <!-- <div id="timeline"></div> -->
-    <!-- NICK : I'm having issues with our timeline div. -->
-    <!-- It's part of main-div which is a flexbox row element and i need this -->
-    <!-- div to break out of that pattern and align itself under the box-container div -->
-    <!-- Any ideas? -->
+    <aside id="info-sidebar"><div id="side-content"></div></aside>
+    <div id="right-panel">
+      <div id="box-container"></div>
+      <input id="rangeSlider" type="range" name="Year" min="1980" max="2017" step="1">
+    </div>
   </div>
 
   </body>
