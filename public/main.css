@@ -21,15 +21,25 @@ body{
   margin: 0;
 }
 
+#side-content{
+  margin-top: 30%;
+  width: 90%;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid white;
+}
+
 #right-panel{
   display: flex;
   flex-direction: column;
 }
 
+
 #box-container{
   background: url("images/rice_paper.png");
   background-color: #E1E1D5;
-  z-index: -1;
+  /*z-index: -1;*/
   flex: 2;
   padding: 2%;
   margin: 3%;
@@ -40,6 +50,7 @@ body{
   align-items: center;
   align-content: space-around;
 }
+
 
 .circle-div {
   display: flex;
