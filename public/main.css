@@ -47,7 +47,6 @@ body{
 #box-container{
   background: url("images/rice_paper.png");
   background-color: #E1E1D5;
-  /*z-index: -1;*/
   flex: 2;
   padding: 2%;
   margin: 2%;
@@ -86,19 +85,55 @@ body{
   border-radius: 50%;
 }
 
-.vulnerable{
-  /*transition: height 2s ease;*/
-  width: 75%;
-  height: 75%;
-  background-color: #D8B252;
+
+.extinct {
+  width: 15%;
+  height: 15%;
+  background-color: red;
+}
+
+.critical{
+  width: 25%;
+  height: 25%;
+  background-color: pink;
 }
 
 .endangered{
   /*transition: height 2s ease;*/
-  width: 50%;
-  height: 50%;
+  width: 30%;
+  height: 30%;
   background-color: #DC6337;
 }
+
+.vulnerable{
+  /*transition: height 2s ease;*/
+  width: 50%;
+  height: 50%;
+  background-color: #D8B252;
+}
+
+.near_threatened{
+  width: 65%;
+  height: 65%;
+  background-color: yellow;
+}
+
+.least{
+  width: 80%;
+  height: 80%;
+  background-color: blue;
+}
+
+.unknown{
+  width: 90%;
+  height: 90%;
+  background-color: gray;
+}
+
+
+
+
+
 
 .circle-div p {
   margin: 0;

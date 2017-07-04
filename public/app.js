@@ -55,14 +55,13 @@ var renderContainer = function(animal, year){
 
   var head = document.createElement("p");
   head.innerText = animal.name;
+
   div.appendChild(head)
 
   div.appendChild(renderCircle(animal, year));
 
   div.addEventListener('click', function(event){
-    console.log("Animal within click event : ", animal)
     renderSidebar(animal);
-    side.scrollTop(0)
   })
   outer.appendChild(div);
 }
@@ -96,11 +95,51 @@ var renderInnerCircle = function(animal, year){
   var innerCircle = document.createElement("div");
 
   var newClass;
-  if (currentStatus === "Vulnerable"){
+  // console.log(animal.name)
+  // console.log("!!!!", "!"+currentStatus+"!")
+
+  if (currentStatus === "Extinct in the Wild"){
+    newClass = "extinct";
+  } else if ( currentStatus === "Critically Endangered"){
+    newClass = "critical"
+  } else if (currentStatus === "Endangered"){
+    newClass = "endangered";
+  } else if ( currentStatus === "Vulnerable"){
     newClass = "vulnerable"
+  } else if (currentStatus === "Near Threatened"){
+    newClass = "near_threatened";
+  } else if (currentStatus === "Least Concern"){
+    newClass = "least"
   } else {
-    newClass = "endangered"
+    newClass = "unknown";
   }
+  console.log("Animal : ", animal.name);
+  console.log("Animals status : ", currentStatus);
+  console.log("New class is : ", newClass);
+  //
+  // switch (currentStatus) {
+  //   case "Extinct in the Wild":
+  //     newClass = "extinct"
+  //     break;
+  //   case "Critically Endangered":
+  //     newClass = "critical"
+  //     break;
+  //   case "Endangered":
+  //     newclass = "endangered"
+  //     break;
+  //   case "Vulnerable":
+  //     newclass = "vulnerable"
+  //     break;
+  //   case "Near Threatened":
+  //     newclass = "near_threatened"
+  //     break;
+  //   case "Least Concern":
+  //     newclass = "least"
+  //     break;
+  //   default:
+  //     console.log("Unable to find: ", currentStatus);
+  //     newClass = "unknown";
+  // }
 
   innerCircle.className = "inner-circle " + newClass;
   return innerCircle;
