@@ -114,7 +114,7 @@ var getSurveyResults = function(animalArray){
 
 var loadDatabase = function(animalArray){
 
-  MongoClient.connect("mongodb://localhost:27017/endangeredAnimals", function(err, db){
+  MongoClient.connect("mongodb://localhost:27017/species", function(err, db){
 
     if (db){
       db.collection("species").remove({});
