@@ -16,7 +16,7 @@ var namesArray = ["Loxodonta africana",
 // "Orcaella brevirostris", "Panthera onca", "Rhinoceros sondaicus", "Dermochelys coriacea",
 // "Caretta caretta", "Ara ararauna", "Panthera tigris jacksoni", "Amblyrhynchus cristatus",
 // "Gorilla beringei beringei", "Charadrius montanus", "Monodon monoceros", "Eubalaena glacialis", "Lepidochelys olivacea",
-// "Pongo pygmaeus"
+"Pongo pygmaeus"
 ];
 
 //build an array of IDs
@@ -49,21 +49,69 @@ namesArray.forEach(function(scientificName, index){
         }
         animalObjectArray.push(animalObject);
       }
+      else {
+        animalObjectArray.push(undefined);
+      }
 
       if (isComplete(animalObjectArray)){
-        console.log("Complete! idsArray: ", animalObjectArray);
+        console.log("Complete! animalObjectArray: ", animalObjectArray);
         animalObjectArrayCompressed = compressArray(animalObjectArray);
         console.log("Compressed array: ", animalObjectArrayCompressed);
 
         //do some more stuff here!
+        getNarratives(animalObjectArray);
+        console.log("objects with added narratives", animalObjectArray);
       }
     }); //request
 });
 
+var getNarratives = function(animalObjectArray){
+
+  var rootUrl = "http://apiv3.iucnredlist.org/api/v3/species/narrative/";
+  var endUrl = "?token=7fed1505eceb7b96fba16063a9b85a02b583179102f64c9c0d1bc482b2f2cba8";
+
+  // request (rootUrl + latinName + endUrl, , function (error, response, body)
+  // "http://apiv3.iucnredlist.org/api/v3/species/narrative/" + speciesLatinName + "?token=7fed1505eceb7b96fba16063a9b85a02b583179102f64c9c0d1bc482b2f2cba8", function (error, response, body)
+  animalObjectArray.forEach(function(animal, index){
+
+    request (rootUrl + animal.latinName + endUrl, function (error, response, body) {
+      var data = JSON.parse(body);
+
+      if (response.statusCode != 200) return;
+        var speciesPopulation = data.result[0].population;
+        var speciesThreats = data.result[0].threats;
+        var speciesHabitat = data.result[0].habitat;
+        var speciesRange = data.result[0].geographicrange;
+
+        animal.narrative.push({
+          population: speciesPopulation,
+          threats: speciesThreats,
+          habitat: speciesHabitat,
+          range: speciesRange
+        });
+
+        if (allNarrativesAdded(animalObjectArray)){
+          console.log("Hurray! All narratives added!");
+          console.log(animalObjectArray);
+        }
+    });//request
+  });//forEach
+}//getNarratives
+
+var allNarrativesAdded = function(animalObjectArray){
+  var count = 0;
+  for (var i = 0; i < animalObjectArray.length; i++) {
+    if (animalObjectArray[i].narrative !== []){
+      count++;
+    }
+  }
+  return count === animalObjectArray.length;
+}
+
 var compressArray = function(array){
 var returnArray = [];
 for (var i = 0; i < array.length; i++) {
-  if (array[i] > 0){
+  if (array[i] !== undefined){
     returnArray.push(array[i]);
   }
 }
@@ -74,7 +122,7 @@ var isComplete = function(array){
 var positionsFilled = 0;
 
 for (var i = 0; i < array.length; i++) {
-  if (array[i] || array[i] === null){
+  if (array[i] || array[i] === undefined){
     positionsFilled++;
   }
 }
