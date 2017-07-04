@@ -1,5 +1,6 @@
 window.addEventListener('load', function(){
 
+
   var height = document.body.scrollHeight
   var main = document.getElementById("main-div");
   main.style.height = height + "px";
@@ -8,34 +9,16 @@ window.addEventListener('load', function(){
 
   slider.addEventListener('input', function(){
     getAllJson(renderAll.bind(this));
-    // getSpeciesJson("africanElephant", renderElephantDiv.bind(this));
-    console.log(slider.value)
   })
 
   var renderAll = function(data){
     document.getElementById("box-container").innerHTML = "";
     data.forEach(function(animal){
-      // renderAnimalDiv(animal);
-
-      console.log("slider value!=", this.value)
-      console.log('data:', data)
-
       renderContainer(animal, this.value)
-
-
-
     }.bind(this));
   }
 
-
-
-  var renderAnimalDiv = function(data){
-
-
-  };
-
-
-
+  getAllJson(renderAll);
 
 });
 
@@ -49,44 +32,11 @@ var getAllJson = function(callback){
   request.open("GET", url);
   request.send();
 
-  request.addEventListener('load', function () {
+  request.addEventListener('load', function() {
     if (request.status === 200) {
       var jsonString = request.responseText;
       var data = JSON.parse(jsonString);
       console.log("All data received from server: ", data);
-      callback(data);
-    }
-  });
-}
-
-var getSpeciesJson = function(speciesName, callback){
-
-  switch(speciesName) {
-    case "africanElephant":
-        url = "http://localhost:3005/species/12392";
-        break;
-    case "africanLion":
-        url = "http://localhost:3005/species/15951";
-        break;
-    case "blueWhale":
-        url = "http://localhost:3005/species/2477";
-        break;
-    case "loggerheadTurtle":
-        url = "http://localhost:3005/species/3897";
-        break;
-  }
-
-  var dataToReturn;
-
-  var request = new XMLHttpRequest();
-
-  request.open("GET", url);
-  request.send();
-  request.addEventListener('load', function () {
-    if (request.status === 200) {
-      var jsonString = request.responseText;
-      var data = JSON.parse(jsonString);
-      console.log("Data received from server: ", data);
       callback(data);
     }
   });
@@ -116,10 +66,9 @@ var renderCircle = function(animal, year){
 }
 
 var renderInnerCircle = function(animal, year){
+  if (!year){ year = 1999}
   var currentStatus = getCurrentStatus(animal, year);
-
   var innerCircle = document.createElement("div");
-  // innerCircle.className = "inner-circle";
 
   var newClass;
   if (currentStatus === "Vulnerable"){
@@ -128,11 +77,8 @@ var renderInnerCircle = function(animal, year){
     newClass = "endangered"
   }
 
-
   innerCircle.className = "inner-circle " + newClass;
   innerCircle.id = animal.id;
-  // innerCircle.innerText = animal.name;
-  // need a function somewhere to render to a specific size and assign colour - by class?
   return innerCircle;
 }
 
