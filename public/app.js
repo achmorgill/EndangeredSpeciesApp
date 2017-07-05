@@ -42,7 +42,11 @@ var renderContainer = function(animal, year){
 
   var div = document.createElement("div");
   div.className = "circle-div";
-  div.id = animal.id;
+
+  var image = document.createElement("img");
+  image.src = "croppedImages/" + animal.id + ".jpg"
+  div.appendChild(image);
+
   var outer = document.getElementById("box-container")
 
   var head = document.createElement("p");
@@ -53,7 +57,15 @@ var renderContainer = function(animal, year){
   div.appendChild(renderCircle(animal, year));
 
   div.addEventListener('click', function(event){
+
+    var arr = [].slice.call(document.getElementsByClassName("bg-circle"));
+    arr.forEach(function(item){
+      item.classList.remove("selected")
+    })
+
     renderSidebar(animal);
+    var selected = document.getElementById(animal.id)
+    selected.classList.add("selected")
   })
   outer.appendChild(div);
 }
@@ -148,6 +160,7 @@ var getDefaultText = function(text, defaultText){
 var renderCircle = function(animal, year){
   var bgCircle = document.createElement("div");
   bgCircle.className = "bg-circle";
+  bgCircle.id = animal.id;
   var inner = renderInnerCircle(animal, year)
   bgCircle.appendChild(inner);
   return bgCircle;
@@ -195,9 +208,6 @@ var renderInnerCircle = function(animal, year){
   else {
     newClass = "other";
   }
-  console.log("Animal : ", animal.name);
-  console.log("Animals status : ", currentStatus);
-  console.log("New class is : ", newClass);
 
   innerCircle.className = "inner-circle " + newClass;
   return innerCircle;
