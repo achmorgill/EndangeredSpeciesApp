@@ -4,18 +4,6 @@ window.addEventListener('load', function(){
 
   side.innerHTML = getDefaultHTML();
 
-
-
-  // var a = document.createElement("a")
-  // link = ""
-  //
-  // a.setAttribute("embed", link);
-  // a.innerHTML = "Red List Video";
-  // side.appendChild(a)
-
-
-
-
   var height = document.body.scrollHeight
   var main = document.getElementById("main-div");
   main.style.height = height + "px";
@@ -47,9 +35,7 @@ var getDefaultHTML = function(){
           "size, habitat and ecology, use and/or trade, threats, and conservation actions that will help inform necessary "+
           "conservation decisions.</p>";
 
-    return "<img width='50' src=\"./RedListLogo.png\"/><br>"+"<p>"+displayText+"</p>"+
-      // "<embed src='https://www.youtube.com/watch?v=w7GQZsGmW5Y&feature=youtu.be&t=33' allowfullscreen='true' width='425' height='344'>";
-
+    return "<img width='50' id='logo' src=\"./RedListLogo.png\"/>"+"<p>"+displayText+"</p>"+
       '<iframe width="90%" height="315" src="https://www.youtube.com/embed/w7GQZsGmW5Y" frameborder="0" allowfullscreen></iframe>'
 }
 
