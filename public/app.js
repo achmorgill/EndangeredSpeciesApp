@@ -44,11 +44,9 @@ var renderContainer = function(animal, year){
   div.className = "circle-div";
   div.id = animal.id;
 
-  div.style = "background : url(images/" + animal.id + ".jpg); height: 80px; border-radius: 50%;"
-
-  // var image = document.createElement("img");
-  // image.src = "images/" + animal.id + ".jpg"
-  // div.appendChild(image);
+  var image = document.createElement("img");
+  image.src = "croppedImages/" + animal.id + ".jpg"
+  div.appendChild(image);
 
   var outer = document.getElementById("box-container")
 
@@ -135,9 +133,6 @@ var renderInnerCircle = function(animal, year){
   else {
     newClass = "other";
   }
-  console.log("Animal : ", animal.name);
-  console.log("Animals status : ", currentStatus);
-  console.log("New class is : ", newClass);
 
   innerCircle.className = "inner-circle " + newClass;
   return innerCircle;
