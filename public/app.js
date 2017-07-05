@@ -71,11 +71,56 @@ var renderSidebar = function(animal){
   image.src = "images/" + animal.id + ".jpg"
   side.appendChild(image)
 
-  var main = document.createElement("p")
-  main.innerHTML = animal.narrative.habitat;
+  var ul = buildUl(animal);
+  side.appendChild(ul);
 
-  side.appendChild(main)
-  // TODO: complete data
+  var main = document.createElement('p');
+  main.id = "infoText"
+  main.innerHTML = animal.narrative.population;
+
+  side.appendChild(main);
+  
+}
+
+var buildUl = function(animal){
+  var ul = document.createElement('ul');
+  
+  var liPopulation = document.createElement('li');
+  liPopulation.id = "liPopulation";
+  liPopulation.innerText = "Population";
+  liPopulation.addEventListener("click", function() {
+
+    console.log ("populations is here")
+  })
+
+  // liPopulation.addEventListener("mouseover", function() {
+  //   console.log("we are entering")
+  //   liPopulation.classList.add("li-hover-on")
+  // })
+
+  // liPopulation.addEventListener("mouseout", function() {
+  //   console.log("we are leaving")
+  //   liPopulation.classList.remove("li-hover-on")
+  // })
+
+  var liThreats = document.createElement('li');
+  liThreats.innerText = "Threats";
+
+  var liHabitat = document.createElement('li');
+  liHabitat.innerText = "Habitat";
+
+  var liRange = document.createElement('li');
+  liRange.innerText = "Range";
+  
+  ul.appendChild(liPopulation)
+  ul.appendChild(liThreats)
+  ul.appendChild(liHabitat)
+  ul.appendChild(liRange)
+
+  return ul;
+  // var linkPopulation = document.createElement('a');
+
+
 }
 
 var renderCircle = function(animal, year){

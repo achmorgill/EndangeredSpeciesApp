@@ -20,6 +20,10 @@ body{
   height: 100%;
   width: 30%;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: right;*/
+  /*align-items: center;*/
 }
 
 #side-content{
@@ -171,6 +175,40 @@ input[type=range]#rangeSlider::-webkit-slider-thumb {
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: 0px;
+}
+
+/*li-hover-on {
+  cursor: hand;
+}
+
+li-hover-off {
+  cursor: auto;
+}*/
+
+ul {
+  /*background-color: green;*/
+  display: flex;
+  justify-content: center;
+  /*margin: 0px;*/
+  padding: 0px;
+
+}
+
+li {
+  list-style-type: none;
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 10px;
+
+}
+
+li:hover{
+  background-color: red;
+  cursor: hand;
+}
+
+#infoText { 
+  text-align: left;
 }
 
 
