@@ -1,5 +1,21 @@
 window.addEventListener('load', function(){
 
+  var side = document.getElementById('side-content');
+
+  side.innerHTML = getDefaultHTML();
+
+
+
+  // var a = document.createElement("a")
+  // link = ""
+  //
+  // a.setAttribute("embed", link);
+  // a.innerHTML = "Red List Video";
+  // side.appendChild(a)
+
+
+
+
   var height = document.body.scrollHeight
   var main = document.getElementById("main-div");
   main.style.height = height + "px";
@@ -20,6 +36,22 @@ window.addEventListener('load', function(){
   getAllJson(renderAll);
 });//addEventListener
 
+
+var getDefaultHTML = function(){
+
+  var displayText = "Established in 1964, the IUCN Red List of Threatened Species has evolved to become the world’s "+
+          "most comprehensive information source on the global conservation status of animal, fungi and plant species."+
+          "<p>It is a critical indicator of the health of the world’s biodiversity. Far more than a list of species and their "+
+          "status, it is a powerful tool to inform and catalyze action for biodiversity conservation and policy change, "+
+          "critical to protecting the natural resources we need to survive.</p><p>It provides information about range, population "+
+          "size, habitat and ecology, use and/or trade, threats, and conservation actions that will help inform necessary "+
+          "conservation decisions.</p>";
+
+    return "<img width='50' src=\"./RedListLogo.png\"/><br>"+"<p>"+displayText+"</p>"+
+      // "<embed src='https://www.youtube.com/watch?v=w7GQZsGmW5Y&feature=youtu.be&t=33' allowfullscreen='true' width='425' height='344'>";
+
+      '<iframe width="90%" height="315" src="https://www.youtube.com/embed/w7GQZsGmW5Y" frameborder="0" allowfullscreen></iframe>'
+}
 
 var getAllJson = function(callback){
 
@@ -104,16 +136,6 @@ var buildUl = function(animal, main){
   liPopulation.addEventListener("click", function() {
     main.innerHTML = getDefaultText(animal.narrative.population, "No information available.");
   })
-
-  // liPopulation.addEventListener("mouseover", function() {
-  //   console.log("we are entering")
-  //   liPopulation.classList.add("li-hover-on")
-  // })
-
-  // liPopulation.addEventListener("mouseout", function() {
-  //   console.log("we are leaving")
-  //   liPopulation.classList.remove("li-hover-on")
-  // })
 
   var liThreats = document.createElement('li');
   liThreats.innerText = "Threats";

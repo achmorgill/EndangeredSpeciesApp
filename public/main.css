@@ -41,6 +41,10 @@ body{
   overflow: auto;
 }
 
+#side-content p {
+  text-align: left;
+}
+
 #right-panel{
   width: 67%;
   display: flex;
