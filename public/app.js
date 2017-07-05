@@ -61,7 +61,7 @@ var renderContainer = function(animal, year){
 var renderSidebar = function(animal){
 
   var side = document.getElementById("side-content");
-  side.innerHTML = "";
+  side.innerText = "";
 
   var header = document.createElement("h2");
   header.innerText = animal.name;
@@ -71,26 +71,25 @@ var renderSidebar = function(animal){
   image.src = "images/" + animal.id + ".jpg"
   side.appendChild(image)
 
-  var ul = buildUl(animal);
-  side.appendChild(ul);
-
   var main = document.createElement('p');
   main.id = "infoText"
-  main.innerHTML = animal.narrative.population;
-
-  side.appendChild(main);
+  main.innerHTML = getDefaultText(animal.narrative.population, "No information available.");
   
+  var ul = buildUl(animal, main);
+  side.appendChild(ul);
+
+  side.appendChild(main);  
 }
 
-var buildUl = function(animal){
+var buildUl = function(animal, main){
   var ul = document.createElement('ul');
   
   var liPopulation = document.createElement('li');
   liPopulation.id = "liPopulation";
   liPopulation.innerText = "Population";
+  
   liPopulation.addEventListener("click", function() {
-
-    console.log ("populations is here")
+    main.innerHTML = getDefaultText(animal.narrative.population, "No information available.");
   })
 
   // liPopulation.addEventListener("mouseover", function() {
@@ -106,11 +105,24 @@ var buildUl = function(animal){
   var liThreats = document.createElement('li');
   liThreats.innerText = "Threats";
 
+  liThreats.addEventListener("click", function() {
+    main.innerHTML = getDefaultText(animal.narrative.threats, "No information available.");
+  })
+
   var liHabitat = document.createElement('li');
   liHabitat.innerText = "Habitat";
 
+  liHabitat.addEventListener("click", function() {
+    main.innerHTML = animal.narrative.habitat;
+  })
+
   var liRange = document.createElement('li');
   liRange.innerText = "Range";
+
+  liRange.addEventListener("click", function() {
+    main.innerHTML = animal.narrative.range;
+  })
+
   
   ul.appendChild(liPopulation)
   ul.appendChild(liThreats)
@@ -121,6 +133,16 @@ var buildUl = function(animal){
   // var linkPopulation = document.createElement('a');
 
 
+}
+
+var getDefaultText = function(text, defaultText){
+  if (text === null || text.length === 0){
+    console.log("AAA")
+    return defaultText;
+  } else {
+    console.log("BBB")
+    return text;
+  }
 }
 
 var renderCircle = function(animal, year){

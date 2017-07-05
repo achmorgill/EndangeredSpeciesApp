@@ -208,7 +208,8 @@ li:hover{
 }
 
 #infoText { 
-  text-align: left;
+  text-align: justify;
+  width: 90%;
 }
 
 
