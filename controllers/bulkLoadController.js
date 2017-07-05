@@ -53,11 +53,7 @@ namesArray.forEach(function(scientificName, index){
       }
 
       if (isComplete(animalObjectArray, namesArray)){
-        // console.log("Complete! animalObjectArray: ", animalObjectArray);
-
         animalObjectArrayCompressed = compressArray(animalObjectArray);
-        // console.log("Compressed array: ", animalObjectArrayCompressed);
-
         getNarratives(animalObjectArrayCompressed);
       }
     }); //request
