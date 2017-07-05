@@ -1,8 +1,5 @@
 window.addEventListener('load', function(){
 
-
-
-
   var height = document.body.scrollHeight
   var main = document.getElementById("main-div");
   main.style.height = height + "px";
@@ -20,13 +17,8 @@ window.addEventListener('load', function(){
     }.bind(this));
   }
 
-
-
   getAllJson(renderAll);
-  // console.log(document.getElementsByClassName("circle-div"))
-
-});
-
+});//addEventListener
 
 
 var getAllJson = function(callback){
@@ -67,16 +59,21 @@ var renderContainer = function(animal, year){
 }
 
 var renderSidebar = function(animal){
+
   var side = document.getElementById("side-content");
   side.innerHTML = "";
+
   var header = document.createElement("h2");
   header.innerText = animal.name;
   side.appendChild(header);
+
   var image = document.createElement("img");
   image.src = "images/" + animal.id + ".jpg"
   side.appendChild(image)
+
   var main = document.createElement("p")
   main.innerHTML = animal.narrative.habitat;
+
   side.appendChild(main)
   // TODO: complete data
 }
@@ -95,51 +92,45 @@ var renderInnerCircle = function(animal, year){
   var innerCircle = document.createElement("div");
 
   var newClass;
-  // console.log(animal.name)
-  // console.log("!!!!", "!"+currentStatus+"!")
 
   if (currentStatus === "Extinct in the Wild"){
     newClass = "extinct";
-  } else if ( currentStatus === "Critically Endangered"){
-    newClass = "critical"
-  } else if (currentStatus === "Endangered"){
+  }
+  else if ( currentStatus === "Critically Endangered" ||
+            currentStatus === "\"Very rare and believed to be decreasing in numbers\""){
+    newClass = "critical";
+  }
+  else if (currentStatus === "Endangered" ||
+           currentStatus === "\"Very rare but believed to be stable or increasing\""){
     newClass = "endangered";
-  } else if ( currentStatus === "Vulnerable"){
-    newClass = "vulnerable"
-  } else if (currentStatus === "Near Threatened"){
+  }
+  else if (currentStatus === "Vulnerable" ||
+           currentStatus === "Rare"){
+    newClass = "vulnerable";
+  }
+  else if (currentStatus === "Near Threatened" ||
+           currentStatus === "Lower Risk/near threatened" ||
+           currentStatus === "\"Less rare but believed to be threatened-requires watching\""){
     newClass = "near_threatened";
-  } else if (currentStatus === "Least Concern"){
-    newClass = "least"
-  } else {
+  }
+  else if (currentStatus === "Least Concern" ||
+             currentStatus === "Lower Risk/conservation dependent" ||
+             currentStatus === "Lower Risk/least concern" ){
+    newClass = "least";
+  }
+  else if (currentStatus === "Insufficiently Known" ||
+           currentStatus === "Data Deficient" ||
+           currentStatus === "Indeterminate" ||
+           currentStatus === "Not Recognized" ||
+           currentStatus === "\"Status inadequately known-survey required or data sought\""){
     newClass = "unknown";
+  }
+  else {
+    newClass = "other";
   }
   console.log("Animal : ", animal.name);
   console.log("Animals status : ", currentStatus);
   console.log("New class is : ", newClass);
-  //
-  // switch (currentStatus) {
-  //   case "Extinct in the Wild":
-  //     newClass = "extinct"
-  //     break;
-  //   case "Critically Endangered":
-  //     newClass = "critical"
-  //     break;
-  //   case "Endangered":
-  //     newclass = "endangered"
-  //     break;
-  //   case "Vulnerable":
-  //     newclass = "vulnerable"
-  //     break;
-  //   case "Near Threatened":
-  //     newclass = "near_threatened"
-  //     break;
-  //   case "Least Concern":
-  //     newclass = "least"
-  //     break;
-  //   default:
-  //     console.log("Unable to find: ", currentStatus);
-  //     newClass = "unknown";
-  // }
 
   innerCircle.className = "inner-circle " + newClass;
   return innerCircle;
