@@ -42,7 +42,6 @@ var renderContainer = function(animal, year){
 
   var div = document.createElement("div");
   div.className = "circle-div";
-  div.id = animal.id;
 
   var image = document.createElement("img");
   image.src = "croppedImages/" + animal.id + ".jpg"
@@ -58,7 +57,15 @@ var renderContainer = function(animal, year){
   div.appendChild(renderCircle(animal, year));
 
   div.addEventListener('click', function(event){
+
+    var arr = [].slice.call(document.getElementsByClassName("bg-circle"));
+    arr.forEach(function(item){
+      item.classList.remove("selected")
+    })
+
     renderSidebar(animal);
+    var selected = document.getElementById(animal.id)
+    selected.classList.add("selected")
   })
   outer.appendChild(div);
 }
@@ -86,6 +93,7 @@ var renderSidebar = function(animal){
 var renderCircle = function(animal, year){
   var bgCircle = document.createElement("div");
   bgCircle.className = "bg-circle";
+  bgCircle.id = animal.id;
   var inner = renderInnerCircle(animal, year)
   bgCircle.appendChild(inner);
   return bgCircle;

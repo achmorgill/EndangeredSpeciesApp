@@ -8,6 +8,10 @@ body{
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+.selected {
+  border: 4px solid red;
+}
+
 #main-div{
   display: flex;
   width: auto;
@@ -41,8 +45,8 @@ body{
 
 
 #box-container{
-  background: url("images/rice_paper.png");
-  background-color: #E1E1D5;
+  /*background: url("images/rice_paper.png");*/
+  background-color: gray;
   flex: 2;
   padding: 2%;
   margin: 2%;
@@ -71,14 +75,15 @@ body{
   border-radius: 50%;
   position: absolute;
   filter: grayscale();
+  opacity: .7;
   /*z-index: -1;*/
+  cursor: pointer;
 }
 
 .bg-circle{
   width: inherit;
   height: inherit;
   border-radius: 50%;
-  border: 1px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +96,8 @@ body{
   border-radius: 50%;
   z-index: 100;
   background-color: red;
-  opacity: 0.5;
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 
@@ -106,8 +112,8 @@ body{
 }
 
 .endangered{
-  width: 65%;
-  height: 65%;
+  width: 70%;
+  height: 70%;
 }
 
 .vulnerable{
@@ -128,15 +134,24 @@ body{
 /*.unknown{
   width: 90%;
   height: 90%;
-  background-color: red;
+  background-color: blue;
   opacity: .5;
 }*/
 
 .circle-div p {
+  color: white;
+  z-index: 200;
+  display: none;
   margin: 0;
   position: absolute;
   font-size: 0.7em;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  cursor: pointer;
+}
+
+.circle-div:hover p{
+  display: block;
+  cursor: pointer;
 }
 
 input[type=range]#rangeSlider {
