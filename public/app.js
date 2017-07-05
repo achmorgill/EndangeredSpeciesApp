@@ -86,20 +86,21 @@ var renderSidebar = function(animal){
   var main = document.createElement('p');
   main.id = "infoText"
   main.innerHTML = getDefaultText(animal.narrative.population, "No information available.");
-  
+
   var ul = buildUl(animal, main);
   side.appendChild(ul);
 
-  side.appendChild(main);  
+  side.appendChild(main);
 }
 
 var buildUl = function(animal, main){
   var ul = document.createElement('ul');
-  
+  ul.id = "li-menu"
+
   var liPopulation = document.createElement('li');
   liPopulation.id = "liPopulation";
   liPopulation.innerText = "Population";
-  
+
   liPopulation.addEventListener("click", function() {
     main.innerHTML = getDefaultText(animal.narrative.population, "No information available.");
   })
@@ -135,7 +136,7 @@ var buildUl = function(animal, main){
     main.innerHTML = animal.narrative.range;
   })
 
-  
+
   ul.appendChild(liPopulation)
   ul.appendChild(liThreats)
   ul.appendChild(liHabitat)
