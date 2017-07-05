@@ -1,6 +1,6 @@
 body{
   height: 100%;
-  background: url("images/paper_texture.png");
+  background: #F3F2F2;
   background-size: 120%;
   overflow: hidden;
   margin: 0;
@@ -25,7 +25,6 @@ body{
   margin: 0;
   display: flex;
   flex-direction: column;
-  /*justify-content: center;*/
   align-items: center;
 }
 
@@ -46,14 +45,15 @@ body{
 }
 
 #right-panel{
+  align-self: center;
   width: 67%;
   display: flex;
   flex-direction: column;
+  margin-left: 1%;
 }
 
 
 #box-container{
-  /*background: url("images/rice_paper.png");*/
   background-color: gray;
   flex: 2;
   padding: 2%;
@@ -62,9 +62,7 @@ body{
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
-  /*align-items: stretch;*/
   align-content: space-around;
-  /*overflow-y: auto;*/
 }
 
 
@@ -164,8 +162,8 @@ body{
 
 input[type=range]#rangeSlider {
   -webkit-appearance: none;
-  width: auto;
-  margin: 0px 3% 2%;
+  width: 80%;
+  margin: 0px 2% 2%;
 }
 
 input[type=range]#rangeSlider:focus {
@@ -173,7 +171,7 @@ input[type=range]#rangeSlider:focus {
 }
 input[type=range]#rangeSlider::-webkit-slider-runnable-track {
   width: 100%;
-  height: 36px;
+  height: 28px;
   cursor: pointer;
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   background: #36454f;
@@ -183,8 +181,8 @@ input[type=range]#rangeSlider::-webkit-slider-runnable-track {
 input[type=range]#rangeSlider::-webkit-slider-thumb {
   box-shadow: 0.8px 0.8px 0.7px rgba(0, 0, 0, 0.71), 0px 0px 0.8px rgba(13, 13, 13, 0.71);
   border: 0px solid rgba(0, 0, 0, 0.57);
-  height: 36px;
-  width: 20px;
+  height: 28px;
+  width: 28px;
   border-radius: 5px;
   background: #ffffff;
   cursor: pointer;
@@ -223,22 +221,27 @@ li {
 }
 
 #infoText {
-
-  /*text-align: center;*/
+  padding-right: 0;
+  padding-left: 0;
   text-align: justify;
   width: 90%;
   margin-right: auto;
   margin-left: auto;
 }
 
+#range-container{
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 0.8em;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  align-items: center;
+}
 
-
-
-
-/*#rangeSlider {
-width: 80%;
-margin-left: auto;
-margin-right: auto;
-margin-bottom: 2%;
-height: 20px;
-}*/
+#range-container h2{
+  /*font-weight: normal;*/
+  color: #36454f;
+  padding-bottom: 15px;
+}

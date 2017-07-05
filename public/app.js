@@ -93,18 +93,19 @@ var renderContainer = function(animal, year){
     var arr = [].slice.call(document.getElementsByClassName("bg-circle"));
     arr.forEach(function(item){
       item.classList.remove("selected")
-    })
+    });
 
     renderSidebar(animal);
     var selected = document.getElementById(animal.id)
     selected.classList.add("selected")
   })
   outer.appendChild(div);
-}
+};
 
 var renderSidebar = function(animal){
 
   var side = document.getElementById("side-content");
+  side.scrollTop = 0;
   side.innerText = "";
 
   var header = document.createElement("h2");
