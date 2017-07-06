@@ -17,6 +17,7 @@ window.addEventListener('load', function(){
   var renderAll = function(data){
     document.getElementById("box-container").innerHTML = "";
     data.forEach(function(animal){
+      console.log("this.value: ", this.value) //*************************** bug!
       renderContainer(animal, this.value)
     }.bind(this));
   }
@@ -57,6 +58,8 @@ var getAllJson = function(callback){
 }
 
 var renderContainer = function(animal, year){
+
+  if (year === undefined) year = 1999;  // ************************ bug fix!!
 
   var div = document.createElement("div");
   div.className = "circle-div";
