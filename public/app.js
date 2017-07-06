@@ -68,7 +68,9 @@ var renderContainer = function(animal, year){
   var outer = document.getElementById("box-container")
 
   var head = document.createElement("p");
-  head.innerText = animal.name;
+  var current = getCurrentStatus(animal, year)
+  head.innerHTML = animal.name + "<br/>" + current;
+
 
   div.appendChild(head)
 

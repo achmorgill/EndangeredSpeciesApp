@@ -146,6 +146,7 @@ body{
 }*/
 
 .circle-div p {
+  text-align: center;
   color: white;
   z-index: 200;
   display: none;
