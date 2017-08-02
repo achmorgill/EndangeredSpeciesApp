@@ -4,3 +4,17 @@ displays the information in a way which hopefully makes the user realise just wh
 It is written in Javascript with a mongoDB database.  The backend has a manual dataLoader which pulls all the required data 
 from the API and populates the database. The data is changing so infrequently there seemed no need to make this a continual 
 process. The data in the API is quite fragmented and so it takes many calls to the API to copy all the data across.
+
+
+To run:
+
+npm install
+npm start
+
+mongod - run the database mongodb. 
+
+
+run bulkLoadController   - to get actual data from Red List API
+
+run localhost:3005 in the browser 
+
